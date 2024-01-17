@@ -11,19 +11,19 @@ function customerSuccessBalancing(
 ) {
   const customerQuantityByCs = {};
   const cssPresent = customerSuccess.filter(customer => !customerSuccessAway.includes(customer.id));
-  const cssOrder = cssPresent.sort((a, b) => a.score - b.score);
-  const customersOrder = customers.sort((a, b) => a.score - b.score);
+  const cssOrdered = cssPresent.sort((a, b) => a.score - b.score);
+  const customersOrdered = customers.sort((a, b) => a.score - b.score);
   const verifiedCustomers = new Set();
   let csWithLargestCustomers = null;
   let maxLength = 0;
   let tie = false;
 
-  for(let i = 0; i < cssOrder.length; i++) {
-    const csId = cssOrder[i].id
+  for(let i = 0; i < cssOrdered.length; i++) {
+    const csId = cssOrdered[i].id
     customerQuantityByCs[csId] = 0;
 
-    for(const customer of customersOrder) {
-      if(customer.score <= cssOrder[i].score && !verifiedCustomers.has(customer.id)) {
+    for(const customer of customersOrdered) {
+      if(customer.score <= cssOrdered[i].score && !verifiedCustomers.has(customer.id)) {
         verifiedCustomers.add(customer.id)
         customerQuantityByCs[csId]++
       }
