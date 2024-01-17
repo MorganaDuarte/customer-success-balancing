@@ -1,4 +1,4 @@
-# Javascript
+# Desafio RD - CustomerSuccess Balancing
 ## Como rodar os testes
 
 No terminal, execute os comandos:
