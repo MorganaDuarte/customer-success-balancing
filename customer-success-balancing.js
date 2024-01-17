@@ -14,8 +14,8 @@ function customerSuccessBalancing(
   const cssOrdered = cssPresent.sort((a, b) => a.score - b.score);
   const customersOrdered = customers.sort((a, b) => a.score - b.score);
   const verifiedCustomers = new Set();
-  let csWithLargestCustomers = null;
-  let maxLength = 0;
+  let csIdWithLargestCustomers = null;
+  let maxCustomerQuantity = 0;
   let tie = false;
 
   for(let i = 0; i < cssOrdered.length; i++) {
@@ -29,16 +29,16 @@ function customerSuccessBalancing(
       }
     }
 
-    if (customerQuantityByCs[csId] > maxLength) {
-      maxLength = customerQuantityByCs[csId];
-      csWithLargestCustomers = csId;
+    if (customerQuantityByCs[csId] > maxCustomerQuantity) {
+      maxCustomerQuantity = customerQuantityByCs[csId];
+      csIdWithLargestCustomers = csId;
       tie = false;
-    } else if(customerQuantityByCs[csId] === maxLength) {
+    } else if(customerQuantityByCs[csId] === maxCustomerQuantity) {
       tie = true;
     }
   }
 
-  return tie ?  0 : csWithLargestCustomers;
+  return tie ?  0 : csIdWithLargestCustomers;
 }
 
 test("Scenario 1", () => {
